@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฟอร์มรับข้อมูล - จิราภา บุญสมยา (นิ้ง)</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+        .form-group { margin-bottom: 10px; }
+        label { display: inline-block; width: 100px; }
+        input[type="text"], input[type="tel"], input[type="number"], select { border: 1px solid #ccc; padding: 2px; }
+        textarea { width: 100%; max-width: 600px; height: 100px; border: 1px solid #ccc; display: block; margin-top: 5px; }
+        .buttons { margin-top: 15px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        #displayArea { margin-top: 20px; }
+        .result-line { margin-bottom: 5px; }
+        .color-preview { display: inline-block; width: 300px; height: 20px; vertical-align: middle; border: 1px solid #000; }
+    </style>
+</head>
+<body>
+
+    <h2>ฟอร์มรับข้อมูล - จิราภา บุญสมยา (นิ้ง)</h2>
+
+    <form id="dataForm">
+        <div class="form-group">
+            <label>ชื่อ-นามสกุล</label>
+            <input type="text" id="u_name" size="30"> *
+        </div>
+
+        <div class="form-group">
+            <label>เบอร์โทร</label>
+            <input type="tel" id="u_phone" size="25"> *
+        </div>
+
+        <div class="form-group">
+            <label>ส่วนสูง</label>
+            <input type="number" id="u_height" style="width: 60px;"> ชม. *
+        </div>
+
+        <div class="form-group">
+            <label>ที่อยู่</label>
+            <textarea id="u_address"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>วันเดือนปีเกิด</label>
+            <input type="date" id="u_dob">
+        </div>
+
+        <div class="form-group">
+            <label>สีที่ชอบ</label>
+            <input type="color" id="u_color" value="#000000">
+        </div>
+
+        <div class="form-group">
+            <label>สาขาวิชา</label>
+            <select id="u_major">
+                <option value="การบัญชี">การบัญชี</option>
+                <option value="เทคโนโลยีสารสนเทศ">เทคโนโลยีสารสนเทศ</option>
+                <option value="การตลาด">การตลาด</option>
+            </select>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="สมัครสมาชิก" onclick="submitData()">
+            <input type="reset" value="ยกเลิก" onclick="document.getElementById('displayArea').style.display='none'">
+            <button type="button">กดสิ</button>
+            <button type="button">ระวัง</button>
+            <button type="button" onclick="window.print()">print</button>
+        </div>
+    </form>
+
+    <div id="displayArea" style="display:none;">
+        <hr>
+        <div class="result-line">ชื่อ-สกุล: <span id="res_name"></span></div>
+        <div class="result-line">เบอร์โทร: <span id="res_phone"></span></div>
+        <div class="result-line">ส่วนสูง: <span id="res_height"></span></div>
+        <div class="result-line">ที่อยู่: <span id="res_address"></span></div>
+        <div class="result-line">วันเดือนปีเกิด: <span id="res_dob"></span></div>
+        <div class="result-line">สีที่ชอบ: </div>
+        <div id="res_color" class="color-preview"></div>
+        <div class="result-line">สาขาวิชา: <span id="res_major"></span></div>
+    </div>
+
+    <script>
+        function submitData() {
+            // 1. ดึงข้อมูลจากฟอร์มมาเก็บในตัวแปร โดยอ้างอิงจาก ID
+            const name = document.getElementById('u_name').value;
+            const phone = document.getElementById('u_phone').value;
+            const height = document.getElementById('u_height').value;
+            const address = document.getElementById('u_address').value;
+            const dob = document.getElementById('u_dob').value;
+            const color = document.getElementById('u_color').value;
+            const major = document.getElementById('u_major').value;
+
+            // 2. นำข้อมูลไปใส่ในส่วนแสดงผลด้านล่าง
+            document.getElementById('res_name').innerText = name;
+            document.getElementById('res_phone').innerText = phone;
+            document.getElementById('res_height').innerText = height;
+            document.getElementById('res_address').innerText = address;
+            document.getElementById('res_dob').innerText = dob;
+            document.getElementById('res_major').innerText = major;
+            
+            // 3. แสดงสีที่เลือกในรูปแบบแถบสี
+            document.getElementById('res_color').style.backgroundColor = color;
+
+            // 4. สั่งให้ส่วนผลลัพธ์ปรากฏขึ้นมา
+            document.getElementById('displayArea').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

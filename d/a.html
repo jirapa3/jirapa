@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฟอร์มรับข้อมูล - จิราภา บุญสมยา (นิ้ง)</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .form-group { margin-bottom: 8px; }
+        label { display: inline-block; width: 100px; }
+        textarea { width: 100%; max-width: 600px; height: 80px; display: block; margin-top: 5px; }
+        .buttons { margin: 15px 0; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        #displayArea { margin-top: 20px; font-weight: normal; }
+        .result-item { margin-bottom: 5px; }
+        .color-box { display: inline-block; width: 200px; height: 20px; vertical-align: middle; border: 1px solid #000; }
+    </style>
+</head>
+<body>
+
+    <h2>ฟอร์มรับข้อมูล - จิราภา บุญสมยา (นิ้ง)</h2>
+
+    <form id="infoForm">
+        <div class="form-group">
+            <label>ชื่อ-นามสกุล</label>
+            <input type="text" id="name" size="30"> *
+        </div>
+        <div class="form-group">
+            <label>เบอร์โทร</label>
+            <input type="tel" id="phone" size="25"> *
+        </div>
+        <div class="form-group">
+            <label>ส่วนสูง</label>
+            <input type="number" id="height" style="width: 60px;"> ชม. *
+        </div>
+        <div class="form-group">
+            <label>ที่อยู่</label>
+            <textarea id="address"></textarea>
+        </div>
+        <div class="form-group">
+            <label>วันเดือนปีเกิด</label>
+            <input type="date" id="dob">
+        </div>
+        <div class="form-group">
+            <label>สีที่ชอบ</label>
+            <input type="color" id="favColor" value="#000000">
+        </div>
+        <div class="form-group">
+            <label>สาขาวิชา</label>
+            <select id="major">
+                <option value="การบัญชี">การบัญชี</option>
+                <option value="เทคโนโลยีสารสนเทศ">เทคโนโลยีสารสนเทศ</option>
+                <option value="การตลาด">การตลาด</option>
+            </select>
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="showData()">สมัครสมาชิก</button>
+            <button type="reset">ยกเลิก</button>
+            <button type="button">กดสิ</button>
+            <button type="button">ระวัง</button>
+            <button type="button" onclick="window.print()">print</button>
+        </div>
+    </form>
+
+    <div id="displayArea" style="display:none;">
+        <div class="result-item">ชื่อ-สกุล: <span id="resName"></span></div>
+        <div class="result-item">เบอร์โทร: <span id="resPhone"></span></div>
+        <div class="result-item">ส่วนสูง: <span id="resHeight"></span></div>
+        <div class="result-item">ที่อยู่: <span id="resAddress"></span></div>
+        <div class="result-item">วันเดือนปีเกิด: <span id="resDob"></span></div>
+        <div class="result-item">สีที่ชอบ

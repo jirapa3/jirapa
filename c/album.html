@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จิรภา บุญสมยา(นิ้ง) - ร้านขายมัทฉะ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .jumbotron { padding: 4rem 2rem; background-color: #fff; }
+        
+        /* สไตล์สำหรับทำให้ Card และรูปภาพเท่ากันทุกช่อง */
+        .card { 
+            height: 100%; 
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); 
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 250px; /* กำหนดความสูงรูปภาพให้เท่ากัน */
+            object-fit: cover; /* บังคับให้รูปตัดพอดีกรอบ ไม่เบี้ยว */
+        }
+
+        .card-text { font-size: 0.9rem; }
+        .price-text { color: #6c757d; font-size: 0.85rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <strong>Album</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="jumbotron text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">จิราภา บุญสมยา (นิ้ง)</h1>
+                <p class="lead text-muted">ร้านขายมัทฉะพรีเมียม นำเข้าจากญี่ปุ่น</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">ดูสินค้าทั้งหมด</a>
+                    <a href="#" class="btn btn-secondary my-2">สมัครสมาชิก</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                
+                <script>
+                    for(let i=1; i<=9; i++) {
+                        document.write(`
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="มัทฉะ.jpg" class="card-img-top" alt="Product Image">
+                                <div class="card-body">
+                                    <p class="card-text fw-bold">มัทฉะพรีเมียม เกรดที่ ${i}</p>
+                                    <p class="price-text">ราคา 590 บาท</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">ดูรายละเอียด</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">เพิ่มลงตะกร้า</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Album example is &copy; Bootstrap</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
