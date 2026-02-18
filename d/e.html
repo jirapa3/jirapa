@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ฟอร์มรับข้อมูล จิราภา บุญสมยา</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding: 40px 0;
+        }
+        .container-form {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .header-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-logo h1 {
+            color: #4a90e2;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+        .header-logo p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+        }
+        .form-label {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .required {
+            color: #ff4d4f;
+        }
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 12px 0;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+        .form-control, .form-select {
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #4a90e2;
+        }
+        .help-text {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container container-form">
+    <div class="header-logo">
+        <h1>I LOVE MYJOB</h1>
+        <p>จิราภา บุญสมยา</p>
+        <p class="text-muted small italic">งานดี เงินดี</p>
+    </div>
+
+    <form action="#" method="POST">
+        
+        <div class="section-title">1. ตำแหน่งที่ต้องการสมัคร</div>
+        <div class="row">
+            <div class="col-md-7 mb-3">
+                <label class="form-label">ตำแหน่งที่สนใจ (Position Applied For) <span class="required">*</span></label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>กรุณาเลือกตำแหน่งงาน...</option>
+                    <option value="Dev">Software Engineer</option>
+                    <option value="Design">UI/UX Designer</option>
+                    <option value="Marketing">Marketing Specialist</option>
+                </select>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label class="form-label">เงินเดือนที่คาดหวัง (Expected Salary) (บาท/เดือน)</label>
+                <input type="text" class="form-control" placeholder="ระบุตัวเลข (เช่น 65000)">
+                <div class="help-text">สามารถเจรจาได้ตามประสบการณ์ (Negotiable)</div>
+            </div>
+        </div>
+
+        <div class="section-title">2. ข้อมูลส่วนตัว (Personal Details)</div>
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <label class="form-label">คำนำหน้า <span class="required">*</span></label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>เลือก</option>
+                    <option value="Mr">นาย</option>
+                    <option value="Ms">นางสาว</option>
+                </select>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label class="form-label">ชื่อ (First Name) <span class="required">*</span></label>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-5 mb-3">
+                <label class="form-label">นามสกุล (Last Name) <span class="required">*</span></label>
+                <input type="text" class="form-control" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label">วันเดือนปีเกิด (Date of Birth) <span class="required">*</span></label>
+                <input type="date" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">เบอร์โทรศัพท์ (Phone No.) <span class="required">*</span></label>
+                <input type="tel" class="form-control" required placeholder="08x-xxxxxxx">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">อีเมล (Email Address) <span class="required">*</span></label>
+                <input type="email" class="form-control" required placeholder="example@mail.com">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">ที่อยู่ปัจจุบัน (Current Address) <span class="required">*</span></label>
+            <textarea class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="section-title">3. การศึกษาและทักษะ (Education & Skills)</div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">ระดับการศึกษาสูงสุด <span class="required">*</span></label>
+                <select class="form-select" required>
+                    <option value="" selected disabled>เลือกวุฒิการศึกษาสูงสุด...</option>
+                    <option value="Bach">ปริญญาตรี</option>
+                    <option value="Mast">ปริญญาโท</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">ความสามารถพิเศษ / ใบรับรอง (Certifications)</label>
+                <input type="text" class="form-control" placeholder="เช่น ภาษาอังกฤษดีเยี่ยม, AWS Certified">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">สรุปประสบการณ์ทำงานโดยย่อ (Work Experience Summary)</label>
+            <textarea class="form-control" rows="3" placeholder="ระบุตำแหน่งงาน บริษัท และระยะเวลาที่เกี่ยวข้อง"></textarea>
+        </div>
+
+        <div class="section-title">4. การยื่นเอกสาร (Documentation)</div>
+        <div class="mb-3">
+            <label class="form-label">แนบไฟล์ Resume / CV <span class="required">*</span></label>
+            <input type="file" class="form-control" required>
+            <div class="help-text">รูปแบบไฟล์ที่รองรับ: PDF หรือ DOCX (ขนาดไม่เกิน 10MB)</div>
+        </div>
+
+        <div class="form-check mt-4">
+            <input class="form-check-input" type="checkbox" value="" id="policyCheck" required>
+            <label class="form-check-label small" for="policyCheck">
+                ข้าพเจ้ายอมรับ <a href="#">นโยบายความเป็นส่วนตัวของข้อมูล</a> ของ Synergy Global Tech. *
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+             ส่งใบสมัคร (SUBMIT APPLICATION)
+        </button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
