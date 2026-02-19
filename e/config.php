@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "รหัสผ่านจริงของเซิร์ฟเวอร์", "4002db");
+$conn = new mysqli("localhost", "jirapa_user", "123456", "4002db");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
