@@ -26,17 +26,22 @@
             <?php
             $sql = "SELECT * FROM for_application";
             $result = $conn->query($sql);
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td class='text-center'>{$row['a_id']}</td>
-                        <td>{$row['a_position']}</td>
-                        <td>{$row['a_fullname']}</td>
-                        <td>{$row['a_phone']}</td>
-                        <td class='text-center'>
-                            <a href='form.php?id={$row['a_id']}' class='btn btn-warning btn-sm'>แก้ไข</a>
-                            <a href='delete.php?id={$row['a_id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"ยืนยันการลบข้อมูล?\")'>ลบ</a>
-                        </td>
-                      </tr>";
+
+            if ($result && $result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td class='text-center'>" . htmlspecialchars($row['a_id']) . "</td>
+                            <td>" . htmlspecialchars($row['a_position']) . "</td>
+                            <td>" . htmlspecialchars($row['a_fullname']) . "</td>
+                            <td>" . htmlspecialchars($row['a_phone']) . "</td>
+                            <td class='text-center'>
+                                <a href='form.php?id=" . $row['a_id'] . "' class='btn btn-warning btn-sm'>แก้ไข</a>
+                                <a href='delete.php?id=" . $row['a_id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"ยืนยันการลบข้อมูล?\")'>ลบ</a>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' class='text-center text-muted'>ไม่มีข้อมูล</td></tr>";
             }
             ?>
         </tbody>

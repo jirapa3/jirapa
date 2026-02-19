@@ -1,10 +1,8 @@
-<?php
-include 'config.php';
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    $sql = "DELETE FROM for_application WHERE a_id = $id";
-    if($conn->query($sql)){
-        echo "<script>alert('ลบข้อมูลเรียบร้อย!'); window.location='index.php';</script>";
-    }
-}
-?>
+<?php include 'config.php'; ?>
+<?php include 'check_login.php'; ?>
+
+$id = $_GET['id'];
+$conn->query("DELETE FROM for_application WHERE a_id=$id");
+
+header("Location: index.php");
+exit();
