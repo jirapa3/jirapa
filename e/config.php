@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $conn = new mysqli("localhost", "root", "", "4002db");
 
 if ($conn->connect_error) {
