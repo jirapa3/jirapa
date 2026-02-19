@@ -20,7 +20,7 @@
 <body>
 
 <div class="container">
-    <h3 class="header-title">ฟอร์มรับข้อมูล - จิราภา บุญสมยา (นิ้ง)</h3>
+    <h3 class="header-title">ฟอร์มรับข้อมูล จิราภา บุญสมยา (นิ้ง)</h3>
     
     <div class="form-container">
         <form id="dataForm">
