@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จิราภา บุญสมยา Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f7f6; font-family: 'Sarabun', sans-serif; padding: 40px 0; }
+        .card-custom { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 40px; max-width: 900px; margin: auto; }
+        
+        /* สไตล์หน้า Success */
+        .success-header { text-align: center; margin-bottom: 30px; }
+        .success-icon { color: #28a745; font-size: 3rem; margin-bottom: 15px; }
+        .success-title { color: #1e7e34; font-weight: bold; font-size: 1.8rem; }
+        .section-header { color: #0d6efd; font-weight: bold; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px; }
+        
+        .info-table { width: 100%; border-collapse: collapse; }
+        .info-table td { padding: 12px 8px; border-bottom: 1px solid #f8f9fa; font-size: 0.95rem; }
+        .info-label { font-weight: bold; width: 40%; color: #555; }
+        .info-value { color: #000; }
+        
+        .btn-home { background-color: #6c757d; color: white; border: none; padding: 10px 30px; border-radius: 6px; margin-top: 40px; }
+        .btn-home:hover { background-color: #5a6268; color: white; }
+
+        /* หัวข้อส่วนฟอร์ม */
+        .form-title { font-weight: bold; border-left: 5px solid #0d6efd; padding-left: 15px; margin: 25px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="applicationForm" class="card-custom">
+        <div class="text-center mb-5">
+            <h1 style="color: #0d6efd;">I LOVE MYJOB</h1>
+            <p class="text-muted">จิรภา บุญสมยา</p>
+        </div>
+
+        <form onsubmit="return handleFormSubmit(event)">
+            <div class="form-title">1. ข้อมูลการสมัคร</div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">ตำแหน่งที่สมัคร</label>
+                    <input type="text" id="pos" class="form-control" value="Cyber Security Expert" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">เงินเดือนที่คาดหวัง (บาท/เดือน)</label>
+                    <input type="text" id="sal" class="form-control" value="100,000" required>
+                </div>
+            </div>
+
+            <div class="form-title">2. ข้อมูลส่วนตัว</div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" class="form-control" value="นางสาว อนัญญา ผลจันทร์" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">วันเดือนปีเกิด</label>
+                    <input type="date" id="dob" class="form-control" value="2004-09-11" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="tel" class="form-control" value="0930805699" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">อีเมล</label>
+                    <input type="email" id="email" class="form-control" value="66010914023@msu.ac.th" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">ที่อยู่</label>
+                <textarea id="addr" class="form-control" rows="2">xx xxx xxx</textarea>
+            </div>
+
+            <div class="form-title">3. การศึกษา</div>
+            <div class="mb-3">
+                <label class="form-label">ระดับการศึกษา</label>
+                <select id="edu" class="form-select">
+                    <option value="Bachelor's Degree">ปริญญาตรี (Bachelor's Degree)</option>
+                    <option value="Master's Degree">ปริญญาโท</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mt-4">ส่งใบสมัคร (SUBMIT APPLICATION)</button>
+        </form>
+    </div>
+
+    <div id="successPage" class="card-custom" style="display: none;">
+        <div class="success-header">
+            <div class="success-icon">✅</div>
+            <div class="success-title">ข้อมูลการสมัครงานถูกส่งแล้ว</div>
+            <p class="text-muted mt-2">Synergy Global Tech ได้รับข้อมูลของคุณแล้ว เราจะติดต่อกลับโดยเร็วที่สุด</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-header">รายละเอียดส่วนตัว</div>
+                <table class="info-table">
+                    <tr><td class="info-label">ชื่อ-สกุล:</td><td class="info-value" id="res_name"></td></tr>
+                    <tr><td class="info-label">วันเดือนปีเกิด:</td><td class="info-value" id="res_dob"></td></tr>
+                    <tr><td class="info-label">เบอร์โทรศัพท์:</td><td class="info-value" id="res_tel"></td></tr>
+                    <tr><td class="info-label">อีเมล:</td><td class="info-value" id="res_email"></td></tr>
+                    <tr><td class="info-label">ที่อยู่:</td><td class="info-value" id="res_addr"></td></tr>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <div class="section-header">รายละเอียดงานและทักษะ</div>
+                <table class="info-table">
+                    <tr><td class="info-label">ตำแหน่งที่สมัคร:</td><td class="info-value"><strong id="res_pos"></strong></td></tr>
+                    <tr><td class="info-label">เงินเดือนคาดหวัง:</td><td class="info-value" id="res_sal"></td></tr>
+                    <tr><td class="info-label">ระดับการศึกษา:</td><td class="info-value" id="res_edu"></td></tr>
+                    <tr><td class="info-label">ความสามารถพิเศษ:</td><td class="info-value">-</td></tr>
+                    <tr><td class="info-label">ประสบการณ์ทำงาน:</td><td class="info-value">-</td></tr>
+                    <tr><td class="info-label">ทราบข่าวจาก:</td><td class="info-value">ไม่ได้ระบุ</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-home" onclick="location.reload()">⬅ หน้าหลัก</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleFormSubmit(event) {
+        event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
+
+        // 1. ดึงค่าจากฟอร์ม
+        const data = {
+            name: document.getElementById('name').value,
+            dob: document.getElementById('dob').value,
+            tel: document.getElementById('tel').value,
+            email: document.getElementById('email').value,
+            addr: document.getElementById('addr').value,
+            pos: document.getElementById('pos').value,
+            sal: document.getElementById('sal').value,
+            edu: document.getElementById('edu').value
+        };
+
+        // 2. นำข้อมูลไปใส่ในหน้า Success
+        document.getElementById('res_name').innerText = data.name;
+        document.getElementById('res_dob').innerText = data.dob;
+        document.getElementById('res_tel').innerText = data.tel;
+        document.getElementById('res_email').innerText = data.email;
+        document.getElementById('res_addr').innerText = data.addr;
+        document.getElementById('res_pos').innerText = data.pos;
+        document.getElementById('res_sal').innerText = data.sal + " บาท/เดือน";
+        document.getElementById('res_edu').innerText = data.edu;
+
+        // 3. สลับหน้าจอ
+        document.getElementById('applicationForm').style.display = 'none';
+        document.getElementById('successPage').style.display = 'block';
+
+        // เลื่อนหน้าจอขึ้นบนสุด
+        window.scrollTo(0, 0);
+        return false;
+    }
+</script>
+
+</body>
+</html>
