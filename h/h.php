@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <title>เข้าสู่ระบบหลังบ้าน</title>
-</head>
-<body>
+<?php
+include("../connectdb.php");
 
-    <h1>เข้าสู่ระบบหลังบ้าน-จิราภา </h1>
+if(isset($_POST['submit'])){
 
-    <form method="post">
-        Username <input type="text" name="username"><br><br>
-        Password <input type="password" name="password"><br><br>
-        <input type="submit" value="LOGIN">
-    </form>
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $sql = "INSERT INTO admin (a_name, a_username, a_password)
+            VALUES ('$name','$username','$password')";
 
-        $user = $_POST["username"];
-        $pass = $_POST["password"];
-
-        // กำหนด username และ password ที่ถูกต้อง
-        if ($user == "admin" && $pass == "1234") {
-            echo "<h3 style='color:green;'>เข้าสู่ระบบสำเร็จ</h3>";
-        } else {
-            echo "<h3 style='color:red;'>Username หรือ Password ไม่ถูกต้อง</h3>";
-        }
+    if(mysqli_query($conn,$sql)){
+        echo "✅ บันทึกข้อมูลเรียบร้อย";
+    }else{
+        echo "❌ Error: " . mysqli_error($conn);
     }
-    ?>
-
-</body>
-</html>
+}
+?>
