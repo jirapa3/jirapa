@@ -7,16 +7,14 @@ include("connectdb.php");
 if(isset($_GET['del'])){
     $id = intval($_GET['del']);
 
-    # ดึงชื่อไฟล์รูป
+    # ดึงชื่อรูปก่อนลบ
     $q = mysqli_query($conn,"SELECT p_img FROM provinces WHERE p_id=$id");
     $data = mysqli_fetch_assoc($q);
 
-    # ลบรูปออกจากโฟลเดอร์
     if(!empty($data['p_img']) && file_exists("images/".$data['p_img'])){
         unlink("images/".$data['p_img']);
     }
 
-    # ลบข้อมูลในฐานข้อมูล
     mysqli_query($conn,"DELETE FROM provinces WHERE p_id=$id");
 
     header("Location: b.php");
@@ -28,19 +26,17 @@ if(isset($_GET['del'])){
 # =========================
 if(isset($_POST['submit'])){
 
-    $name = mysqli_real_escape_string($conn,$_POST['p_name']);
-    $region = intval($_POST['r_id']);
+    $name   = $_POST['p_name'];
+    $region = $_POST['r_id'];
+    $img    = "";
 
-    $img = "";
-    
-    # ตรวจสอบว่ามีการอัปโหลดไฟล์
+    # ถ้ามีการอัปโหลดรูป
     if(!empty($_FILES['p_img']['name'])){
 
         $ext = pathinfo($_FILES['p_img']['name'], PATHINFO_EXTENSION);
-        $img = time().".".$ext;   # กันชื่อไฟล์ซ้ำ
+        $img = time().".".$ext;   # กันชื่อซ้ำ
 
-        move_uploaded_file($_FILES['p_img']['tmp_name'],
-                           "images/".$img);
+        move_uploaded_file($_FILES['p_img']['tmp_name'], "images/".$img);
     }
 
     mysqli_query($conn,"
@@ -53,25 +49,20 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>จัดการจังหวัด</title>
-</head>
-<body>
-
 <h1>งาน i -- จิราภา บุญสมยา</h1>
 
 <form method="post" enctype="multipart/form-data">
     ชื่อจังหวัด :
-    <input type="text" name="p_name" required><br><br>
+    <input type="text" name="p_name" required>
+    <br><br>
 
     รูปภาพ :
-    <input type="file" name="p_img"><br><br>
+    <input type="file" name="p_img">
+    <br><br>
 
     ภาค :
     <select name="r_id" required>
+        <option value="">-- เลือกภาค --</option>
         <?php
         $region = mysqli_query($conn,"SELECT * FROM regions");
         while($r = mysqli_fetch_assoc($region)){
@@ -88,7 +79,7 @@ if(isset($_POST['submit'])){
 
 <br><br>
 
-<table border="1" cellpadding="6">
+<table border="1" cellpadding="5">
 <tr>
     <th>รหัสจังหวัด</th>
     <th>ชื่อจังหวัด</th>
@@ -99,8 +90,8 @@ if(isset($_POST['submit'])){
 
 <?php
 $sql = mysqli_query($conn,"
-    SELECT provinces.*, regions.r_name 
-    FROM provinces 
+    SELECT provinces.*, regions.r_name
+    FROM provinces
     LEFT JOIN regions ON provinces.r_id = regions.r_id
 ");
 
@@ -118,7 +109,7 @@ while($row = mysqli_fetch_assoc($sql)){
         <?php } ?>
     </td>
 
-    <td align="center">
+    <td>
         <a href="?del=<?php echo $row['p_id']; ?>"
            onclick="return confirm('ต้องการลบหรือไม่?');">
            <img src="images/delete.png" width="25">
@@ -127,9 +118,13 @@ while($row = mysqli_fetch_assoc($sql)){
 </tr>
 
 <?php } ?>
+<<<<<<< HEAD
 
 </table>
 
 </body>
 </html>
 
+=======
+</table>
+>>>>>>> 68550d962cea9ba0c7ad0dddf22e35b98561cf41
