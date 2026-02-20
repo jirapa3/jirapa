@@ -118,13 +118,10 @@ while($row = mysqli_fetch_assoc($sql)){
 </tr>
 
 <?php } ?>
-<<<<<<< HEAD
 
 </table>
 
 </body>
 </html>
 
-=======
 </table>
->>>>>>> 68550d962cea9ba0c7ad0dddf22e35b98561cf41
