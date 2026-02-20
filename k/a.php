@@ -42,7 +42,7 @@
     
     <br>
 
-    <button class="btn-green" onclick="window.open('images/s1.jpeg', '_blank')">
+    <button class="btn-green" onclick="window.open('images/s1.jpg', '_blank')">
         เปิดรูปตัวเอง
     </button>
 
