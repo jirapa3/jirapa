@@ -1,0 +1,106 @@
+<?php
+include("connectdb.php");
+
+# ลบข้อมูล
+if(isset($_GET['del'])){
+    $id = $_GET['del'];
+
+    # ลบรูปก่อน
+    $q = mysqli_query($conn,"SELECT p_img FROM provinces WHERE p_id=$id");
+    $data = mysqli_fetch_assoc($q);
+    if($data['p_img'] != ""){
+        unlink("images/".$data['p_img']);
+    }
+
+    mysqli_query($conn,"DELETE FROM provinces WHERE p_id=$id");
+    header("location:b.php");
+}
+
+# เพิ่มข้อมูล
+if(isset($_POST['submit'])){
+
+    $name = $_POST['p_name'];
+    $region = $_POST['r_id'];
+
+    # อัปโหลดรูป
+    $img = $_FILES['p_img']['name'];
+    $tmp = $_FILES['p_img']['tmp_name'];
+
+    if($img != ""){
+        move_uploaded_file($tmp,"images/".$img);
+    }
+
+    mysqli_query($conn,"INSERT INTO provinces(p_name,p_img,r_id)
+                        VALUES('$name','$img','$region')");
+
+    header("location:b.php");
+}
+?>
+
+<h1>งาน i -- จิราภา บุญสมยา</h1>
+
+<form method="post" enctype="multipart/form-data">
+    ชื่อจังหวัด
+    <input type="text" name="p_name" required><br><br>
+
+    รูปภาพ
+    <input type="file" name="p_img"><br><br>
+
+    ภาค
+    <select name="r_id">
+        <?php
+        $region = mysqli_query($conn,"SELECT * FROM regions");
+        while($r = mysqli_fetch_assoc($region)){
+        ?>
+            <option value="<?php echo $r['r_id']; ?>">
+                <?php echo $r['r_name']; ?>
+            </option>
+        <?php } ?>
+    </select>
+    <br><br>
+
+    <button type="submit" name="submit">บันทึก</button>
+</form>
+
+<br><br>
+
+<table border="1" cellpadding="5">
+<tr>
+    <th>รหัสจังหวัด</th>
+    <th>ชื่อจังหวัด</th>
+    <th>ชื่อภาค</th>
+    <th>รูป</th>
+    <th>ลบ</th>
+</tr>
+
+<?php
+$sql = mysqli_query($conn,"
+    SELECT provinces.*, regions.r_name 
+    FROM provinces 
+    LEFT JOIN regions ON provinces.r_id = regions.r_id
+");
+
+while($row = mysqli_fetch_assoc($sql)){
+?>
+
+<tr>
+    <td><?php echo $row['p_id']; ?></td>
+    <td><?php echo $row['p_name']; ?></td>
+    <td><?php echo $row['r_name']; ?></td>
+
+    <td>
+        <?php if($row['p_img'] != ""){ ?>
+            <img src="images/<?php echo $row['p_img']; ?>" width="80">
+        <?php } ?>
+    </td>
+
+    <td>
+        <a href="?del=<?php echo $row['p_id']; ?>"
+           onclick="return confirm('ต้องการลบหรือไม่?');">
+           <img src="images/delete.png" width="25">
+        </a>
+    </td>
+</tr>
+
+<?php } ?>
+</table>
