@@ -66,7 +66,7 @@
                 <td>2022-01-06</td>
                 <td>United States</td>
                 <td>4,270</td>
-                <td><img src="Carrots.jpg" alt="Carrots" class="Carrots.jpg"></td>
+                <td><img src="images/Carrots.jpg" alt="Carrots" class="images/Carrots.jpg"></td>
             </tr>
             <tr>
                 <td>2</td>
@@ -75,7 +75,7 @@
                 <td>2022-01-07</td>
                 <td>United Kingdom</td>
                 <td>8,239</td>
-                <td><img src="Broccoli.jpg" alt="Broccoli" class="Broccoli.jpg"></td>
+                <td><img src="images/Broccoli.jpg" alt="Broccoli" class="images/Broccoli.jpg"></td>
             </tr>
             <tr>
                 <td>3</td>
@@ -84,7 +84,7 @@
                 <td>2022-01-08</td>
                 <td>United States</td>
                 <td>617</td>
-                <td><img src="Banana.jpg" alt="Banana" class="Banana.jpg"></td>
+                <td><img src="images/Banana.jpg" alt="Banana" class="images/Banana.jpg"></td>
             </tr>
             <tr>
                 <td>4</td>
@@ -93,7 +93,7 @@
                 <td>2022-01-10</td>
                 <td>Canada</td>
                 <td>8,384</td>
-                <td><img src="Banana.jpg" alt="Banana" class="Banana.jpg"></td>
+                <td><img src="images/Banana.jpg" alt="Banana" class="images/Banana.jpg"></td>
             </tr>
             <tr>
                 <td>5</td>
@@ -102,7 +102,7 @@
                 <td>2022-01-10</td>
                 <td>Germany</td>
                 <td>2,626</td>
-                <td><img src="Beans.jpg" alt="Beans" class="Beans.jpg"></td>
+                <td><img src="images/Beans.jpg" alt="Beans" class="images/Beans.jpg"></td>
             </tr>
             <tr>
                 <td>6</td>
@@ -111,7 +111,7 @@
                 <td>2022-01-11</td>
                 <td>United States</td>
                 <td>3,610</td>
-                <td><img src="Orange.jpg" alt="Orange" class="Orange.jpg"></td>
+                <td><img src="images/Orange.jpg" alt="Orange" class="images/Orange.jpg"></td>
             </tr>
         </tbody>
     </table>

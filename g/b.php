@@ -58,7 +58,7 @@
                 <td>2022-01-16</td>
                 <td>Sweden</td>
                 <td>2,417</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
             <tr>
                 <td>10</td>
@@ -67,7 +67,7 @@
                 <td>2022-01-16</td>
                 <td>Canada</td>
                 <td>7,431</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
             <tr>
                 <td>15</td>
@@ -76,7 +76,7 @@
                 <td>2022-01-24</td>
                 <td>Sweden</td>
                 <td>6,946</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
             <tr>
                 <td>20</td>
@@ -85,7 +85,7 @@
                 <td>2022-02-02</td>
                 <td>United States</td>
                 <td>1,161</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
             <tr>
                 <td>30</td>
@@ -94,7 +94,7 @@
                 <td>2022-02-21</td>
                 <td>Sweden</td>
                 <td>7,602</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
             <tr>
                 <td>32</td>
@@ -103,7 +103,7 @@
                 <td>2022-02-23</td>
                 <td>Australia</td>
                 <td>8,892</td>
-                <td><img src="Vegetables.jpg" class="product-img"></td>
+                <td><img src="images/Apple.jpg" class="product-img"></td>
             </tr>
         </tbody>
     </table>
