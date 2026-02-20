@@ -1,7 +1,12 @@
 <?php
-$conn = mysqli_connect("localhost","root","","4002db");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "4002db";
 
-if(!$conn){
-    die("เชื่อมต่อฐานข้อมูลไม่ได้: " . mysqli_connect_error());
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>

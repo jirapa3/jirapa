@@ -1,5 +1,5 @@
 <?php
-include("../connectdb.php");
+include("connectdb.php");
 
 if(isset($_POST['submit'])){
 
@@ -11,9 +11,9 @@ if(isset($_POST['submit'])){
             VALUES ('$name','$username','$password')";
 
     if(mysqli_query($conn,$sql)){
-        echo "✅ บันทึกข้อมูลเรียบร้อย";
+        echo "บันทึกข้อมูลเรียบร้อย";
     }else{
-        echo "❌ Error: " . mysqli_error($conn);
+        echo "Error: " . mysqli_error($conn);
     }
 }
 ?>
