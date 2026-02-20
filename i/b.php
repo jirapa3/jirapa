@@ -1,53 +1,77 @@
 <?php
 include("connectdb.php");
 
+# =========================
 # ลบข้อมูล
+# =========================
 if(isset($_GET['del'])){
-    $id = $_GET['del'];
+    $id = intval($_GET['del']);
 
-    # ลบรูปก่อน
+    # ดึงชื่อไฟล์รูป
     $q = mysqli_query($conn,"SELECT p_img FROM provinces WHERE p_id=$id");
     $data = mysqli_fetch_assoc($q);
-    if($data['p_img'] != ""){
+
+    # ลบรูปออกจากโฟลเดอร์
+    if(!empty($data['p_img']) && file_exists("images/".$data['p_img'])){
         unlink("images/".$data['p_img']);
     }
 
+    # ลบข้อมูลในฐานข้อมูล
     mysqli_query($conn,"DELETE FROM provinces WHERE p_id=$id");
-    header("location:b.php");
+
+    header("Location: b.php");
+    exit();
 }
 
+# =========================
 # เพิ่มข้อมูล
+# =========================
 if(isset($_POST['submit'])){
 
-    $name = $_POST['p_name'];
-    $region = $_POST['r_id'];
+    $name = mysqli_real_escape_string($conn,$_POST['p_name']);
+    $region = intval($_POST['r_id']);
 
-    # อัปโหลดรูป
-    $img = $_FILES['p_img']['name'];
-    $tmp = $_FILES['p_img']['tmp_name'];
+    $img = "";
+    
+    # ตรวจสอบว่ามีการอัปโหลดไฟล์
+    if(!empty($_FILES['p_img']['name'])){
 
-    if($img != ""){
-        move_uploaded_file($tmp,"images/".$img);
+        $ext = pathinfo($_FILES['p_img']['name'], PATHINFO_EXTENSION);
+        $img = time().".".$ext;   # กันชื่อไฟล์ซ้ำ
+
+        move_uploaded_file($_FILES['p_img']['tmp_name'],
+                           "images/".$img);
     }
 
-    mysqli_query($conn,"INSERT INTO provinces(p_name,p_img,r_id)
-                        VALUES('$name','$img','$region')");
+    mysqli_query($conn,"
+        INSERT INTO provinces(p_name,p_img,r_id)
+        VALUES('$name','$img','$region')
+    ");
 
-    header("location:b.php");
+    header("Location: b.php");
+    exit();
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>จัดการจังหวัด</title>
+</head>
+<body>
 
 <h1>งาน i -- จิราภา บุญสมยา</h1>
 
 <form method="post" enctype="multipart/form-data">
-    ชื่อจังหวัด
+    ชื่อจังหวัด :
     <input type="text" name="p_name" required><br><br>
 
-    รูปภาพ
+    รูปภาพ :
     <input type="file" name="p_img"><br><br>
 
-    ภาค
-    <select name="r_id">
+    ภาค :
+    <select name="r_id" required>
         <?php
         $region = mysqli_query($conn,"SELECT * FROM regions");
         while($r = mysqli_fetch_assoc($region)){
@@ -64,7 +88,7 @@ if(isset($_POST['submit'])){
 
 <br><br>
 
-<table border="1" cellpadding="5">
+<table border="1" cellpadding="6">
 <tr>
     <th>รหัสจังหวัด</th>
     <th>ชื่อจังหวัด</th>
@@ -89,12 +113,12 @@ while($row = mysqli_fetch_assoc($sql)){
     <td><?php echo $row['r_name']; ?></td>
 
     <td>
-        <?php if($row['p_img'] != ""){ ?>
+        <?php if(!empty($row['p_img'])){ ?>
             <img src="images/<?php echo $row['p_img']; ?>" width="80">
         <?php } ?>
     </td>
 
-    <td>
+    <td align="center">
         <a href="?del=<?php echo $row['p_id']; ?>"
            onclick="return confirm('ต้องการลบหรือไม่?');">
            <img src="images/delete.png" width="25">
@@ -103,4 +127,8 @@ while($row = mysqli_fetch_assoc($sql)){
 </tr>
 
 <?php } ?>
+
 </table>
+
+</body>
+</html>
