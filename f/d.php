@@ -16,7 +16,7 @@
         echo "$a : จิราภา บุญสมยา(นิ้ง) <br />";
         
         // แสดงรูปภาพ (ต้องมีไฟล์ชื่อ 1.jpg อยู่ในโฟลเดอร์เดียวกัน)
-        echo "<img src='download.jpg' width='250'><hr>";
+        echo "<img src='images/m3.jpg' width='250'><hr>";
         
     }
     ?>
