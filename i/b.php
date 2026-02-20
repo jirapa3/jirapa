@@ -112,7 +112,7 @@ while($row = mysqli_fetch_assoc($sql)){
     <td>
         <a href="?del=<?php echo $row['p_id']; ?>"
            onclick="return confirm('ต้องการลบหรือไม่?');">
-           <img src="images/delete.png" width="25">
+           <img src="images/delete.jpg" width="25">
         </a>
     </td>
 </tr>
