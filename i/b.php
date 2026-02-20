@@ -5,14 +5,17 @@ include("connectdb.php");
 # ลบข้อมูล
 # =========================
 if(isset($_GET['del'])){
+
     $id = intval($_GET['del']);
 
-    # ดึงชื่อรูปก่อนลบ
+    // ดึงชื่อรูปก่อนลบ
     $q = mysqli_query($conn,"SELECT p_img FROM provinces WHERE p_id=$id");
     $data = mysqli_fetch_assoc($q);
 
-    if(!empty($data['p_img']) && file_exists("images/".$data['p_img'])){
-        unlink("images/".$data['p_img']);
+    if(!empty($data['p_img'])){
+        if(file_exists("images/".$data['p_img'])){
+            unlink("images/".$data['p_img']);
+        }
     }
 
     mysqli_query($conn,"DELETE FROM provinces WHERE p_id=$id");
@@ -26,15 +29,15 @@ if(isset($_GET['del'])){
 # =========================
 if(isset($_POST['submit'])){
 
-    $name   = $_POST['p_name'];
-    $region = $_POST['r_id'];
+    $name   = mysqli_real_escape_string($conn,$_POST['p_name']);
+    $region = intval($_POST['r_id']);
     $img    = "";
 
-    # ถ้ามีการอัปโหลดรูป
+    // ถ้ามีการอัปโหลดรูป
     if(!empty($_FILES['p_img']['name'])){
 
         $ext = pathinfo($_FILES['p_img']['name'], PATHINFO_EXTENSION);
-        $img = time().".".$ext;   # กันชื่อซ้ำ
+        $img = time().".".$ext;   // กันชื่อซ้ำ
 
         move_uploaded_file($_FILES['p_img']['tmp_name'], "images/".$img);
     }
@@ -118,10 +121,4 @@ while($row = mysqli_fetch_assoc($sql)){
 </tr>
 
 <?php } ?>
-
-</table>
-
-</body>
-</html>
-
 </table>
