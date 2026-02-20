@@ -27,12 +27,12 @@ if(isset($_POST['login'])){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>เข้าสู่ระบบหลังบ้าน-มัทนา</title>
+<title>เข้าสู่ระบบหลังบ้าน-จิราภา</title>
 </head>
 
 <body>
 
-<h1>เข้าสู่ระบบหลังบ้าน-มัทนา</h1>
+<h1>เข้าสู่ระบบหลังบ้าน-จิราภา</h1>
 
 <form method="POST">
     Username <br>
