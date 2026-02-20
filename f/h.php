@@ -9,7 +9,7 @@
     <h2>จิราภา บุญสมยา(นิ้ง)</h2>
 
     <form method="post" action="">
-        66010914046 <input type="text" name="a" autofocus required>
+        รหัสนิสิต <input type="text" name="a" autofocus required>
         <button type="submit" name="Submit">OK</button>
     </form>
     
@@ -24,7 +24,7 @@
         $y = substr($id, 0, 2); 
 
         // แสดงผลรูปภาพโดยดึงจาก URL ของมหาวิทยาลัยตามโครงสร้างที่กำหนด
-        echo "<img src='รูปนิสิต.jpg' width='250'>";
+        echo "<img src='images/รูปนิสิต.jpg' width='250'>";
     }
     ?>
 
